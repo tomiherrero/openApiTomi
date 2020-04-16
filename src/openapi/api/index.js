@@ -1,2 +1,4 @@
 const province = require('./province')
-module.exports = {...province};
+const country = require ('./country')
+const cars = require('./cars')
+module.exports = {...province, ...country, ...cars};

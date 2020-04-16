@@ -27,6 +27,7 @@ class Routes {
     static configure(app) {
         app.use('/', localRoute(Router()));
         Logger.info('Loading public-api...');
+        app.use('/api', require('./api')(Router()));
         app.use('/public-api', require('./public-api')(Router()));
         app.use(errorHandler);
     }

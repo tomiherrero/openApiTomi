@@ -1,19 +1,19 @@
 module.exports = {
-    '/api/province':{
+    '/api/cars':{
         get: {
             security: [],
-            summary: 'List Provinces',
+            summary: 'List Cars',
             parameters: [
                 {
                     in: 'query',
-                    name: 'name',
+                    name: 'brand',
                     schema: {type: 'string'},
-                    description: 'Codigo de Provincia Solicitado'    
+                    description: 'Marca del Auto'    
                 }   
             ],
             responses: {
                 200: {
-                    description: 'List of Provinces of Argentina',
+                    description: 'List of Cars',
                     content: {
                         'application/json': {
                             schema: {

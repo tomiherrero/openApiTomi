@@ -1,19 +1,19 @@
 module.exports = {
-    '/api/province':{
+    '/api/country':{
         get: {
             security: [],
-            summary: 'List Provinces',
+            summary: 'List Countries',
             parameters: [
                 {
                     in: 'query',
-                    name: 'name',
+                    name: 'code',
                     schema: {type: 'string'},
-                    description: 'Codigo de Provincia Solicitado'    
+                    description: 'Codigo de Pais Solicitado'    
                 }   
             ],
             responses: {
                 200: {
-                    description: 'List of Provinces of Argentina',
+                    description: 'List of Countries',
                     content: {
                         'application/json': {
                             schema: {
