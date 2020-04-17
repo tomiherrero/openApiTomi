@@ -9,6 +9,14 @@ class CarsController {
             next(error);
         }
     }
+    static async save(req, res, next) {
+        try {
+            const cars = await Cars.updateOne({id: req.params.id}, req.body);
+            res.send(cars);
+        }catch (error){
+
+        }
+    }
 }
 
 

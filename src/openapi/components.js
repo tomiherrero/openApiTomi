@@ -25,6 +25,19 @@ module.exports = {
                 type: 'string',
                 format: 'uuid'
             }
+
+        },
+        Car: {
+            type: 'object',
+            properties: {
+                id: {
+                    type: 'string',
+                    format: 'uuid',
+                    nullable: true
+                },
+                brand: {type: 'string'},
+                models: {type: 'string'}
+            }
         },
         Error: {
             type: 'object',
