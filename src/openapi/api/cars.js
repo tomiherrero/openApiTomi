@@ -1,5 +1,5 @@
 module.exports = {
-    '/api/cars':{
+    '/api/cars': {
         get: {
             security: [],
             summary: 'List Cars',
@@ -7,28 +7,42 @@ module.exports = {
                 {
                     in: 'query',
                     name: 'brand',
-                    schema: {type: 'string'},
-                    description: 'Marca del Auto'    
-                }   
+                    description: 'Marca del auto solicitado'
+                }
             ],
             responses: {
                 200: {
-                    description: 'List of Cars',
+                    description: 'list of Cars',
                     content: {
                         'application/json': {
                             schema: {
                                 type: 'array',
-                                items: {
-                                    type: 'object',
-                                    properties: {
-                                        id: {
-                                            type: 'string',
-                                            format: 'uuid'
-                                        },
-                                        name:{type: 'string'}
-                                    }
-                                }
-   
+                                items: {$ref: '#/components/schemas/Car'}
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+            }
+        },
+        post: {
+            security: [],
+            requestBody: {
+                description: 'Optional description in *Markdown*',
+                required: true,
+                content: {'application/json': {schema: {$ref: '#/components/schemas/Car'}}}
+            },
+            responses: {
+                200: {
+                    description: 'list of Cars',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {}
                             }
                         }
                     }
@@ -40,7 +54,28 @@ module.exports = {
             }
         }
     },
-    '/api/cars/{id}': {     
+    '/api/cars/{id}': {
+        get: {
+            security: [],
+            parameters: [
+                {
+                    in: 'path',
+                    name: 'brand',
+                    required: true,
+                    description: 'Marca del auto solicitado'
+                }
+            ],
+            responses: {
+                200: {
+                    description: 'list of Cars',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Car'}}}
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+            }
+        },
         put: {
             security: [],
             parameters: [
@@ -52,11 +87,11 @@ module.exports = {
                         format: 'uuid'
                     },
                     required: true,
-                    description: 'Marca del auto solicitada'
+                    description: 'Marca del auto solicitado'
                 }
             ],
             requestBody: {
-                description: 'Optional description in Markdown',
+                description: 'Optional description in *Markdown*',
                 required: true,
                 content: {'application/json': {schema: {$ref: '#/components/schemas/Car'}}}
             },
@@ -78,5 +113,37 @@ module.exports = {
                 }
             }
         },
+        delete: {
+            security: [],
+            parameters: [
+                {
+                    in: 'path',
+                    name: 'brand',
+                    schema: {
+                        type: 'string',
+                        format: 'uuid'
+                    },
+                    required: true,
+                    description: 'Marca del auto solicitado'
+                }
+            ],
+            responses: {
+                200: {
+                    description: 'list of Cars',
+                    content: {
+                        'application/json': {
+                            schema: {
+                                type: 'object',
+                                properties: {}
+                            }
+                        }
+                    }
+                },
+                default: {
+                    description: 'Error',
+                    content: {'application/json': {schema: {$ref: '#/components/schemas/Error'}}}
+                }
+            }
+        }
     }
-}
+};

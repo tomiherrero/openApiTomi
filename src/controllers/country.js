@@ -9,5 +9,37 @@ class CountryController {
             next(error);
         }
     }
+    static async fetchOne (req, res, next){
+        try{
+            const country = await Country.findOne({id: req.params.id});
+            res.send(country);
+        }catch (error){
+            next(error);
+        }
+    }
+    static async create (req, res, next) {
+        try {
+            const result = await Country.insertOne(req.body);
+            res.send(result);
+        }catch (error){
+            next(error);
+        }
+    }
+    static async save (req, res, next) {
+        try {
+            const result = await Country.updateOne({id: req.params.id}, req.body);
+            res.send(result);
+        }catch (error){
+            next(error);
+        }
+    }
+    static async delete (req, res, next) {
+        try {
+            const result = await Country.deleteOne(req.params.id);
+            res.send(result);
+        }catch (error){
+            next(error);
+        }
+    }
 }
 module.exports = CountryController;

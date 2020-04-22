@@ -3,5 +3,10 @@ const {ProvinceController} = include('controllers');
 module.exports = router => {
     router.route('/')
         .get(ProvinceController.fetch)
-    return router; 
-    }
+        .post(ProvinceController.save);
+    router.route('/:id')
+        .get(ProvinceController.fetchOne)
+        .put(ProvinceController.save)
+        .delete(ProvinceController.delete);
+    return router;
+};

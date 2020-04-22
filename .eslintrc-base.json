@@ -21,7 +21,7 @@
     ],
     "linebreak-style": [
       "error",
-      "unix"
+      "window"
     ],
     "eol-last": [
       "error"

@@ -11,7 +11,7 @@
     "abs_root_path": "readonly"
   },
   "extends": [
-    "./.eslintrc-base.json",
+    "./.-base.json",
     "plugin:promise/recommended",
     "plugin:lodash/recommended",
     "plugin:import/warnings"

@@ -39,6 +39,30 @@ module.exports = {
                 models: {type: 'string'}
             }
         },
+        Province: {
+            type: 'object',
+            properties: {
+                id: {
+                    type: 'string',
+                    format: 'uuid',
+                    nullable: true
+                },
+                name: {type: 'string'},
+                code: {type: 'string'}
+            }
+        },
+        Country: {
+            type: 'object',
+            properties: {
+                id: {
+                    type: 'string',
+                    format: 'uuid',
+                    nullable: true
+                },
+                name: {type: 'string'},
+                code: {type: 'string'}
+            }
+        },
         Error: {
             type: 'object',
             required: [

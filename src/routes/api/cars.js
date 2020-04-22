@@ -1,10 +1,13 @@
-const {CarsController} = include('controllers');
 
+const {CarsController} = include('controllers');
 
 module.exports = router => {
     router.route('/')
-        .get(CarsController.fetch);
+        .get(CarsController.fetch)
+        .post(CarsController.create);
     router.route('/:id')
-        .put(CarsController.save);
-    return router;     
+        .get(CarsController.fetchOne)
+        .put(CarsController.save)
+        .detele(CarsController.delete);
+    return router;
 };

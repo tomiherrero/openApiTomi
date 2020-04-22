@@ -9,15 +9,38 @@ class CarsController {
             next(error);
         }
     }
-    static async save(req, res, next) {
-        try {
-            const cars = await Cars.updateOne({id: req.params.id}, req.body);
+    static async fetchOne (req, res, next){
+        try{
+            const cars = await Cars.findOne({id: req.params.id});
             res.send(cars);
         }catch (error){
-
+            next(error);
+        }
+    }
+    static async create (req, res, next) {
+        try {
+            const result = await Cars.insertOne(req.body);
+            res.send(result);
+        }catch (error){
+            next(error);
+        }
+    }
+    static async save (req, res, next) {
+        try {
+            const result = await Cars.updateOne({id: req.params.id}, req.body);
+            res.send(result);
+        }catch (error){
+            next(error);
+        }
+    }
+    static async delete (req, res, next) {
+        try {
+            const result = await Cars.deleteOne(req.params.id);
+            res.send(result);
+        }catch (error){
+            next(error);
         }
     }
 }
-
 
 module.exports = CarsController;
