@@ -8,6 +8,6 @@ module.exports = router => {
     router.route('/:id')
         .get(CarsController.fetchOne)
         .put(CarsController.save)
-        .detele(CarsController.delete);
+        .delete(CarsController.delete);
     return router;
 };

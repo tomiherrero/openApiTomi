@@ -1,15 +1,9 @@
 module.exports = {
-    '/api/provinces': {
+    '/api/province': {
         get: {
             security: [],
             summary: 'List Provinces',
-            parameters: [
-                {
-                    in: 'query',
-                    name: 'code',
-                    description: 'Código de provincia solicitado'
-                }
-            ],
+            parameters: [],
             responses: {
                 200: {
                     description: 'list of Provinces',
@@ -54,14 +48,18 @@ module.exports = {
             }
         }
     },
-    '/api/provinces/{id}': {
+    '/api/province/{id}': {
         get: {
             security: [],
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     required: true,
+                    schema: {
+                        type: 'string',
+                        format: 'uuid'
+                    },
                     description: 'Id de la provincia solicitado'
                 }
             ],
@@ -81,7 +79,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'
@@ -118,9 +116,13 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     required: true,
-                    description: 'Id de la provincia solicitada'
+                    description: 'Id de la provincia solicitada',
+                    schema: {
+                        type: 'string',
+                        format: 'uuid'
+                    }
                 }
             ],
             responses: {

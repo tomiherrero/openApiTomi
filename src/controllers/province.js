@@ -20,7 +20,7 @@ class ProvinceController {
     static async create (req, res, next) {
         try {
             const result = await Province.insertOne(req.body);
-            res.send(result);
+            res.send({status: 'success', result});
         }catch (error){
             next(error);
         }

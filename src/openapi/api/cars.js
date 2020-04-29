@@ -3,13 +3,7 @@ module.exports = {
         get: {
             security: [],
             summary: 'List Cars',
-            parameters: [
-                {
-                    in: 'query',
-                    name: 'brand',
-                    description: 'Marca del auto solicitado'
-                }
-            ],
+            parameters: [],
             responses: {
                 200: {
                     description: 'list of Cars',
@@ -60,9 +54,13 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'brand',
+                    name: 'id',
                     required: true,
-                    description: 'Marca del auto solicitado'
+                    description: 'Marca del auto solicitado',
+                    schema: {
+                        type: 'string',
+                        format: 'uuid'
+                    }
                 }
             ],
             responses: {
@@ -81,7 +79,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'brand',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'
@@ -118,7 +116,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'brand',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'
