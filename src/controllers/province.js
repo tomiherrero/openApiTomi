@@ -3,7 +3,10 @@ const {Province} = include('models');
 class ProvinceController {
     static async fetch (req, res, next) {
         try{
-            const provinces = await Province.find(req.query);
+            const provinces = await Province.find({
+                ... req.query, 
+                    deleted: null
+            });
             res.send(provinces);
         }catch(error){
             next(error);
@@ -35,7 +38,7 @@ class ProvinceController {
     }
     static async delete (req, res, next) {
         try {
-            const result = await Province.deleteOne(req.params.id);
+            const result = await Province.deletedOne(req.params.id);
             res.send(result);
         }catch (error){
             next(error);

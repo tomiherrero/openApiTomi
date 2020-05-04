@@ -3,7 +3,10 @@ const {Cars} = include('models');
 class CarsController {
     static async fetch (req, res, next){
         try{
-            const cars = await Cars.find(req.query);
+            const cars = await Cars.find({
+                ...req.query,
+                deleted: null
+            });
             res.send(cars);
         }catch (error){
             next(error);
@@ -20,7 +23,7 @@ class CarsController {
     static async create (req, res, next) {
         try {
             const result = await Cars.insertOne(req.body);
-            res.send(result);
+            res.send({status: 'success', result});
         }catch (error){
             next(error);
         }
@@ -35,7 +38,7 @@ class CarsController {
     }
     static async delete (req, res, next) {
         try {
-            const result = await Cars.deleteOne(req.params.id);
+            const result = await Cars.deletedOne(req.params.id);
             res.send(result);
         }catch (error){
             next(error);

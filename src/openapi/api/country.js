@@ -64,7 +64,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'
@@ -89,7 +89,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'
@@ -126,7 +126,7 @@ module.exports = {
             parameters: [
                 {
                     in: 'path',
-                    name: 'code',
+                    name: 'id',
                     schema: {
                         type: 'string',
                         format: 'uuid'

@@ -3,7 +3,10 @@ const {Country} = include('models');
 class CountryController {
     static async fetch(req, res, next) {
         try {
-            const countries = await Country.find(req.query);
+            const countries = await Country.find({
+                ...req.query,
+                 deleted: null 
+            });
             res.send(countries);
         }catch (error){
             next(error);
@@ -20,7 +23,7 @@ class CountryController {
     static async create (req, res, next) {
         try {
             const result = await Country.insertOne(req.body);
-            res.send(result);
+            res.send({status: 'success', result});
         }catch (error){
             next(error);
         }
@@ -35,7 +38,7 @@ class CountryController {
     }
     static async delete (req, res, next) {
         try {
-            const result = await Country.deleteOne(req.params.id);
+            const result = await Country.deletedOne(req.params.id);
             res.send(result);
         }catch (error){
             next(error);
